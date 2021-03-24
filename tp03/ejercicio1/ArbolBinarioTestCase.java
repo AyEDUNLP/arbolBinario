@@ -73,18 +73,18 @@ class ArbolBinarioTestCase {
 	@Test
 	void testRecorridoInorder() {
 		ListaGenerica<Integer> lista_esperada = new ListaEnlazadaGenerica<Integer>();
-		lista_esperada.agregarFinal(10);
-		lista_esperada.agregarFinal(4);
-		lista_esperada.agregarFinal(2);
-		lista_esperada.agregarFinal(5);
 		lista_esperada.agregarFinal(1);
-		lista_esperada.agregarFinal(6);
+		lista_esperada.agregarFinal(2);
 		lista_esperada.agregarFinal(3);
+		lista_esperada.agregarFinal(4);
+		lista_esperada.agregarFinal(5);
+		lista_esperada.agregarFinal(6);
 		lista_esperada.agregarFinal(7);
+		lista_esperada.agregarFinal(10);
 		lista_esperada.agregarFinal(8);
 		
 		ArbolBinarioExamples<Integer> arbol_examples = new ArbolBinarioExamples<Integer>();
-		assertEquals(lista_esperada, arbol_examples.inorder(this.ab));
+		assertEquals(lista_esperada, arbol_examples.porNiveles(this.ab));
 	}
 	
 	@Test
@@ -104,5 +104,27 @@ class ArbolBinarioTestCase {
 		assertEquals(lista_esperada, arbol_examples.postorder(this.ab));
 	}
 	
-
+	@Test
+	void testRecorridoPorNiveles() {
+		ListaGenerica<Integer> lista_esperada = new ListaEnlazadaGenerica<Integer>();
+		lista_esperada.agregarFinal(1);
+		lista_esperada.agregarFinal(2);
+		lista_esperada.agregarFinal(3);
+		lista_esperada.agregarFinal(4);
+		lista_esperada.agregarFinal(5);
+		lista_esperada.agregarFinal(6);
+		lista_esperada.agregarFinal(7);
+		lista_esperada.agregarFinal(10);
+		lista_esperada.agregarFinal(8);
+		
+		ArbolBinarioExamples<Integer> arbol_examples = new ArbolBinarioExamples<Integer>();
+		assertEquals(lista_esperada, arbol_examples.porNiveles(this.ab));
+	}
+	
+	@Test
+	void testContarHojas() {
+		ArbolBinarioExamples<Integer> arbol_examples = new ArbolBinarioExamples<Integer>();
+		assertEquals(4, arbol_examples.contarHojas(this.ab));
+		
+	}
 }
