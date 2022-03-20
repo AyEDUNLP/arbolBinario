@@ -212,5 +212,16 @@ public class ListaEnlazadaGenerica<T> extends ListaGenerica<T> {
 		this.actual = punteroPrevio;
 		return nueva;
 	}
+	
+	public boolean equals(Object o) {
+		if (this==o)
+			return true;
+		ListaEnlazadaGenerica<T> lista = (ListaEnlazadaGenerica<T>) o;
+		for (int i=1; i<= lista.tamanio(); i++) {
+			if (!lista.elemento(i).equals(this.elemento(i)))
+				return false;
+		}
+		return true;
+	}
 
 }

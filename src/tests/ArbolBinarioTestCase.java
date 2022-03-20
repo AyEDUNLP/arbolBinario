@@ -2,6 +2,11 @@ package tests;
 
 
 
+
+
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
 import org.junit.Test;
 
 import tp02.ejercicio2.ListaEnlazadaGenerica;
@@ -9,12 +14,12 @@ import tp02.ejercicio2.ListaGenerica;
 import tp03.ejercicio1.ArbolBinario;
 import tp03.ejercicio1.utils.ArbolBinarioExamples;
 
-class ArbolBinarioTestCase {
+public class ArbolBinarioTestCase {
 
 	private ArbolBinario<Integer> ab;
 
-	@BeforeEach
-	void setUp() throws Exception {
+	@Before
+	public void setUp() throws Exception {
 		this.ab=new ArbolBinario<Integer>(1);
 		ArbolBinario<Integer>  ab_hi_n1=new ArbolBinario<Integer>(2);
 		ArbolBinario<Integer>  ab_hd_n1=new ArbolBinario<Integer>(3);
@@ -54,7 +59,7 @@ class ArbolBinarioTestCase {
 	}
 
 	@Test
-	void testRecorridoPreorder() {
+	public void testRecorridoPreorder() {
 		ListaGenerica<Integer> lista_esperada = new ListaEnlazadaGenerica<Integer>();
 		lista_esperada.agregarFinal(1);
 		lista_esperada.agregarFinal(2);
@@ -71,7 +76,7 @@ class ArbolBinarioTestCase {
 	}
 	
 	@Test
-	void testRecorridoInorder() {
+	public void testRecorridoInorder() {
 		ListaGenerica<Integer> lista_esperada = new ListaEnlazadaGenerica<Integer>();
 		lista_esperada.agregarFinal(1);
 		lista_esperada.agregarFinal(2);
@@ -88,7 +93,7 @@ class ArbolBinarioTestCase {
 	}
 	
 	@Test
-	void testRecorridoPostorder() {
+	public void testRecorridoPostorder() {
 		ListaGenerica<Integer> lista_esperada = new ListaEnlazadaGenerica<Integer>();
 		lista_esperada.agregarFinal(10);
 		lista_esperada.agregarFinal(4);
@@ -105,7 +110,7 @@ class ArbolBinarioTestCase {
 	}
 	
 	@Test
-	void testRecorridoPorNiveles() {
+	public void testRecorridoPorNiveles() {
 		ListaGenerica<Integer> lista_esperada = new ListaEnlazadaGenerica<Integer>();
 		lista_esperada.agregarFinal(1);
 		lista_esperada.agregarFinal(2);
@@ -122,7 +127,7 @@ class ArbolBinarioTestCase {
 	}
 	
 	@Test
-	void testContarHojas() {
+	public void testContarHojas() {
 		ArbolBinarioExamples<Integer> arbol_examples = new ArbolBinarioExamples<Integer>();
 		assertEquals(4, arbol_examples.contarHojas(this.ab));
 		
