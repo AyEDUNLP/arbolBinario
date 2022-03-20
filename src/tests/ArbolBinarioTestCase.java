@@ -1,9 +1,12 @@
-package tp03.ejercicio1;
+package tests;
 
 
-import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 import tp02.ejercicio2.ListaEnlazadaGenerica;
 import tp02.ejercicio2.ListaGenerica;
+import tp03.ejercicio1.ArbolBinario;
 import tp03.ejercicio1.utils.ArbolBinarioExamples;
 
 class ArbolBinarioTestCase {
