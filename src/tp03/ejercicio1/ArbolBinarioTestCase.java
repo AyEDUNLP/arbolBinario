@@ -1,10 +1,7 @@
 package tp03.ejercicio1;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import static org.junit.Assert.*;
 import tp02.ejercicio2.ListaEnlazadaGenerica;
 import tp02.ejercicio2.ListaGenerica;
 import tp03.ejercicio1.utils.ArbolBinarioExamples;
