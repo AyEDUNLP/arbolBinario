@@ -6,10 +6,17 @@ import tp02.ejercicio2.ListaGenerica;
 public class ArbolBinario<T> {
 	private T dato;
 	private ArbolBinario<T> hijoIzquierdo;   
-	private ArbolBinario<T> hijoDerecho; 
+	private ArbolBinario<T> hijoDerecho;
 	
 	/**
-	 *  Crea un árbol vacío
+	 * Para dejar en claro que el constructor sin parámetros crea arboles vacíos.
+	 */
+	public static <A> ArbolBinario<A> arbolVacio(){
+		return new ArbolBinario<>();
+	}
+	
+	/**
+	 *  Crea un árbol vacío.
 	 */
 	public ArbolBinario() {
 	}
@@ -18,7 +25,16 @@ public class ArbolBinario<T> {
 	 * Crea un árbol con un dato.  Si este es nulo, se lo considera vacío.
 	 */
 	public ArbolBinario(T dato) {
+		this(dato, null, null);
+	}
+	
+	/**
+	 * Crea un árbol con un dato y dos hijos.
+	 */
+	public ArbolBinario(T dato, ArbolBinario<T> hi, ArbolBinario<T> hd) {
 		this.dato = dato;
+		this.agregarHijoIzquierdo(hi);
+		this.agregarHijoDerecho(hd);
 	}
 
 	/*
@@ -34,33 +50,37 @@ public class ArbolBinario<T> {
 	}
 	
 	public ArbolBinario<T> getHijoIzquierdo() {
-		return this.hijoIzquierdo == null && !this.esVacio() ? new ArbolBinario<>() : this.hijoIzquierdo;
+		return this.hijoIzquierdo;
 	}
 
 	public ArbolBinario<T> getHijoDerecho() {
-		return this.hijoDerecho == null && !this.esVacio() ? new ArbolBinario<>() : this.hijoDerecho;
+		return this.hijoDerecho;
 	}
 
 	public void agregarHijoIzquierdo(ArbolBinario<T> hijo) {
-		this.hijoIzquierdo = hijo;
+		this.hijoIzquierdo = hijo == null ? arbolVacio() : hijo;
 	}
 
 	public void agregarHijoDerecho(ArbolBinario<T> hijo) {
-		this.hijoDerecho = hijo;
+		this.hijoDerecho = hijo == null ? arbolVacio() : hijo;
 	}
 
 	public void eliminarHijoIzquierdo() {
-		this.hijoIzquierdo = null;
+		this.hijoIzquierdo = arbolVacio();
 	}
 
 	public void eliminarHijoDerecho() {
-		this.hijoDerecho = null;
+		this.hijoDerecho = arbolVacio();
 	}
 
 	public boolean esVacio() {
-		return this.getDato() == null && !this.tieneHijoIzquierdo() && !this.tieneHijoDerecho();
+		// alcanza con que cualquiera sea nulo.
+		return this.hijoDerecho == null && this.hijoIzquierdo == null;
 	}
 
+	/**
+	 * Retorna si es una hoja.  Esta operación falla para árboles vacíos.
+	 */
 	public boolean esHoja() {
 		return !this.tieneHijoIzquierdo() && !this.tieneHijoDerecho();
 	}
@@ -69,13 +89,19 @@ public class ArbolBinario<T> {
 	public String toString() {
 		return this.getDato().toString();
 	}
-	 
+	
+	/**
+	 * Indica si tiene un hijo del lado izquierdo.  Esta operación no está definida para árboles vacíos.
+	 */
 	public boolean tieneHijoIzquierdo() {
-		return this.hijoIzquierdo!=null;
+		return !this.hijoIzquierdo.esVacio();
 	}
-	 
+	
+	/**
+	 * Indica si tiene un hijo del lado izquierdo.  Esta operación no está definida para árboles vacíos.
+	 */
 	public boolean tieneHijoDerecho() {
-		return this.hijoDerecho!=null;
+		return !this.hijoDerecho.esVacio();
 	}
 
 	public boolean esLleno() {
