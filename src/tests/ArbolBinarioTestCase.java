@@ -1,9 +1,5 @@
 package tests;
 
-
-
-
-
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
@@ -53,9 +49,6 @@ public class ArbolBinarioTestCase {
 		 *    10              8
 		 * 
 		 * */
-		
-		
-		
 	}
 
 	@Test
@@ -76,6 +69,13 @@ public class ArbolBinarioTestCase {
 	}
 	
 	@Test
+	public void testRecorridoPreorderVacio() {
+		ListaGenerica<Integer> lista_esperada = new ListaEnlazadaGenerica<>();
+		ArbolBinarioExamples<Integer> arbol_examples = new ArbolBinarioExamples<>();
+		assertEquals(lista_esperada, arbol_examples.preorder(new ArbolBinario<>()));
+	}
+	
+	@Test
 	public void testRecorridoInorder() {
 		ListaGenerica<Integer> lista_esperada = new ListaEnlazadaGenerica<Integer>();
 		lista_esperada.agregarFinal(1);
@@ -93,6 +93,13 @@ public class ArbolBinarioTestCase {
 	}
 	
 	@Test
+	public void testRecorridoInorderVacio() {
+		ListaGenerica<Integer> lista_esperada = new ListaEnlazadaGenerica<>();
+		ArbolBinarioExamples<Integer> arbol_examples = new ArbolBinarioExamples<>();
+		assertEquals(lista_esperada, arbol_examples.porNiveles(new ArbolBinario<>()));
+	}
+	
+	@Test
 	public void testRecorridoPostorder() {
 		ListaGenerica<Integer> lista_esperada = new ListaEnlazadaGenerica<Integer>();
 		lista_esperada.agregarFinal(10);
@@ -107,6 +114,12 @@ public class ArbolBinarioTestCase {
 		
 		ArbolBinarioExamples<Integer> arbol_examples = new ArbolBinarioExamples<Integer>();
 		assertEquals(lista_esperada, arbol_examples.postorder(this.ab));
+	}
+
+	@Test
+	public void testRecorridoPostorderVacio() {
+		ArbolBinarioExamples<Integer> arbol_examples = new ArbolBinarioExamples<>();
+		assertEquals(new ListaEnlazadaGenerica<Integer>(), arbol_examples.postorder(new ArbolBinario<Integer>()));
 	}
 	
 	@Test
@@ -127,9 +140,26 @@ public class ArbolBinarioTestCase {
 	}
 	
 	@Test
+	public void testRecorridoPorNivelesVacio() {
+		ArbolBinarioExamples<Integer> arbol_examples = new ArbolBinarioExamples<Integer>();
+		assertEquals(new ListaEnlazadaGenerica<Integer>(), arbol_examples.porNiveles(new ArbolBinario<>()));
+	}
+	
+	@Test
 	public void testContarHojas() {
 		ArbolBinarioExamples<Integer> arbol_examples = new ArbolBinarioExamples<Integer>();
 		assertEquals(4, arbol_examples.contarHojas(this.ab));
-		
+	}
+
+	@Test
+	public void testContarHojasVacio() {
+		ArbolBinarioExamples<Integer> arbol_examples = new ArbolBinarioExamples<>();
+		assertEquals(0, arbol_examples.contarHojas(new ArbolBinario<>()));
+	}
+	
+	@Test
+	public void testContarHojasHoja() {
+		ArbolBinarioExamples<Integer> arbol_examples = new ArbolBinarioExamples<>();
+		assertEquals(1, arbol_examples.contarHojas(new ArbolBinario<>(1)));
 	}
 }
